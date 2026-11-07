@@ -4,7 +4,7 @@ Evidencias **GA8-220501096-AA1-EV01** y **AA1-EV02** · SENA — Análisis y Des
 
 Este documento reúne los **requisitos funcionales**, los **requisitos no funcionales**, las **historias de usuario** y los **casos de uso** de BeautyShop. Todo se obtuvo del código y de la documentación real del proyecto; no se incluye ninguna función que el sistema no tenga. Para aprobar los requisitos se usa el formato de [ACTA_APROBACION_REQUISITOS.md](ACTA_APROBACION_REQUISITOS.md).
 
-> Documentos relacionados: [MODULOS.md](MODULOS.md) · [MANUAL_TECNICO.md](MANUAL_TECNICO.md) · [INFORME_PRUEBAS.md](INFORME_PRUEBAS.md) · [App Android](../mobile-android/README.md)
+> Documentos relacionados: [MODULOS.md](MODULOS.md) · [MANUAL_TECNICO.md](MANUAL_TECNICO.md) · [INFORME_PRUEBAS.md](INFORME_PRUEBAS.md) · [App Android](../mobile-android/)
 
 ## 1. Introducción
 
@@ -38,7 +38,7 @@ Fuera del alcance: pasarela de pago real, envíos, control de inventario al comp
 ## 2. Requisitos funcionales
 
 Prioridad: **Alta** = sin ella no hay tienda; **Media** = mejora importante; **Baja** = complementaria.
-Las pruebas citadas están en [INFORME_PRUEBAS.md](INFORME_PRUEBAS.md) (backend 48, auth-service 8, e2e 7) y en el [README de la app móvil](../mobile-android/README.md#7-pruebas-unitarias) (85 pruebas). «Humo curl» = comprobación manual de la API del informe (sección 4); «manual» = prueba manual con evidencia indicada.
+Las pruebas citadas están en [INFORME_PRUEBAS.md](INFORME_PRUEBAS.md) (backend 48, auth-service 8, e2e 7) y en las [pruebas unitarias de la app móvil](../mobile-android/app/src/test/) (85 pruebas). «Humo curl» = comprobación manual de la API del informe (sección 4); «manual» = prueba manual con evidencia indicada.
 
 ### 2.1 Autenticación
 
@@ -109,7 +109,7 @@ Las pruebas citadas están en [INFORME_PRUEBAS.md](INFORME_PRUEBAS.md) (backend 
 | RNF-06 | Usabilidad | Interfaz y mensajes en español; precios en pesos colombianos con punto de miles; la app móvil muestra estados de carga, vacío y error y traduce los errores de red. | `frontend/src/utils/format.js`, `Toast`; móvil: `Formatters`, `ApiErrors` | `FormattersAndFilterTest`, `ApiErrorMapperTest`; e2e con mensajes visibles; capturas web y móvil |
 | RNF-07 | Usabilidad | La tienda web se adapta a pantallas pequeñas: la rejilla de productos reduce sus columnas hasta una sola y el carrito, el pago, el hero y la barra de navegación se reorganizan con `@media` (1100, 900, 850 y 640 px). | `index.css`, `Cart.css`, `Checkout.css`, `Home.css`, `Navbar.css`, `CartSummary.css` | Revisión de CSS. **No hay prueba automatizada ni capturas en tamaño móvil** |
 | RNF-08 | Portabilidad | Backend y módulos Java compilan con **JDK 17** (`java.version = 17`); la app Android funciona en **Android 8.0 o superior** (`minSdk = 26`, `targetSdk = 35`, `compileSdk = 35`); base de datos MySQL 8 o superior (probado con 9.5). | `pom.xml`; `mobile-android/app/build.gradle.kts` | Compilación y pruebas en JDK 17.0.17 (INFORME_PRUEBAS); APK probado en emulador Android 15 (API 35). Android 8–14 no se probó |
-| RNF-09 | Mantenibilidad | Arquitectura por capas (controlador → servicio → repositorio) en el backend, MVVM con repositorios en la app y estándares de código: `camelCase`, `PascalCase`, 4 espacios, máx. 120 caracteres, Javadoc/KDoc. | Paquetes `controller`, `service`, `repository`, `model`; `mobile-android` (`ui`, `domain`, `data`) | Revisión de código; [MANUAL_TECNICO.md](MANUAL_TECNICO.md) y README de la raíz |
+| RNF-09 | Mantenibilidad | Arquitectura por capas (controlador → servicio → repositorio) en el backend, MVVM con repositorios en la app y estándares de código: `camelCase`, `PascalCase`, 4 espacios, máx. 120 caracteres, Javadoc/KDoc. | Paquetes `controller`, `service`, `repository`, `model`; `mobile-android` (`ui`, `domain`, `data`) | Revisión de código; [MANUAL_TECNICO.md](MANUAL_TECNICO.md) |
 | RNF-10 | Compatibilidad | La tienda web funciona en un navegador moderno de escritorio. **Solo se probó en Chromium** (Playwright, `Desktop Chrome`). | `frontend/playwright.config.js` | e2e 7 de 7 en Chromium; Firefox, Safari y Edge no se probaron |
 | RNF-11 | Rendimiento | En ejecución local el catálogo se descarga una vez y la búsqueda se hace en memoria; la app móvil usa tiempos de espera de 15 s de conexión y 15 s de lectura. | `Home.jsx` (filtro local); `ApiClient`; `ProductRepository` (caché) | `ProductAndCartRepositoryTest` (caché). **No se midieron tiempos de respuesta ni se hizo prueba de carga** |
 | RNF-12 | Documentación | La API se documenta con OpenAPI: Swagger UI en `/swagger-ui.html` y especificación en `/v3/api-docs`, con los grupos Autenticación, Carrito, Pedidos y Productos. | `springdoc-openapi-starter-webmvc-ui 2.5.0`, anotaciones `@Tag` | Humo curl (302 y 200); captura `capturas/07_swagger_ui.png` |
