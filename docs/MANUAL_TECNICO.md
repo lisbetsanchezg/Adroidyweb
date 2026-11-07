@@ -491,7 +491,7 @@ Capturas de las pantallas principales: [catálogo](capturas/01_catalogo.png), [l
 
 ## 10. Estándares de codificación
 
-Tomados del `README.md` del proyecto y aplicados en el código:
+Estándares aplicados en el código:
 
 - Variables y métodos en `camelCase`; los métodos se nombran como verbos.
 - Constantes en `UPPER_SNAKE_CASE` (`static final`).

@@ -10,7 +10,6 @@ Enlace al repositorio de GitHub:
 
     https://github.com/lisbetsanchezg/Adroidyweb
 
-Enlace al video de sustentacion: ver ENLACE_VIDEO_SUSTENTACION.md
 
 ------------------------------------------------------------------------
 URLs locales (despliegue local, ver docs/DESPLIEGUE.md):
