@@ -1,0 +1,33 @@
+.orders-msg {
+  padding: 18px;
+  text-align: center;
+  color: var(--texto-suave);
+  background: #fff5fb;
+  border: 1px solid #f3dbe9;
+  border-radius: 10px;
+}
+
+.orders-error {
+  color: #9a4f80;
+  background: #fff0f3;
+  border-color: #fab2da;
+}
+
+.orders-prompt {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  box-shadow: var(--sombra-card);
+  padding: 28px;
+  text-align: center;
+}
+
+.orders-prompt p {
+  margin: 0 0 16px;
+  color: var(--texto-suave);
+}
+
+.orders-prompt .btn-primary {
+  text-decoration: none;
+  display: inline-block;
+}

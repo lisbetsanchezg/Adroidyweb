@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeautyShop - Iniciar sesion</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #fdf0f5; display: flex;
+               justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { background: #fff; padding: 32px; border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0,0,0,.1); width: 320px; }
+        h1 { color: #c2185b; text-align: center; font-size: 22px; }
+        label { display: block; margin-top: 12px; font-size: 14px; color: #333; }
+        input { width: 100%; padding: 10px; margin-top: 4px; box-sizing: border-box;
+                border: 1px solid #ddd; border-radius: 6px; }
+        button { width: 100%; margin-top: 20px; padding: 12px; background: #c2185b;
+                 color: #fff; border: none; border-radius: 6px; font-size: 15px; cursor: pointer; }
+        button:hover { background: #ad1457; }
+        .link { text-align: center; margin-top: 16px; font-size: 13px; }
+        .link a { color: #c2185b; }
+        .ok { background: #e8f5e9; color: #2e7d32; padding: 10px; border-radius: 6px;
+              font-size: 13px; text-align: center; display: none; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Iniciar sesion 💄</h1>
+        <!-- Mensaje que se muestra cuando el registro fue exitoso (login.html?registered=true) -->
+        <p id="okMessage" class="ok">Registro exitoso. Ya puedes iniciar sesion.</p>
+
+        <!-- El formulario envia un POST al servlet mapeado en /login -->
+        <form action="login" method="post">
+            <label for="email">Correo</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Contrasena</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+        <p class="link">No tienes cuenta? <a href="register.html">Registrate</a></p>
+    </div>
+
+    <script>
+        // Muestra el mensaje de exito si venimos del registro
+        if (new URLSearchParams(window.location.search).get('registered') === 'true') {
+            document.getElementById('okMessage').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

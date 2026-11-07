@@ -1,0 +1,29 @@
+.catalogo-hero {
+  margin-bottom: 20px;
+}
+
+.catalogo-hero h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
+  color: #422a48;
+}
+
+.catalogo-hero p {
+  margin: 8px 0 0;
+  color: #61506d;
+}
+
+.catalogo-msg {
+  padding: 18px;
+  text-align: center;
+  color: var(--texto-suave);
+  background: #fff5fb;
+  border: 1px solid #f3dbe9;
+  border-radius: 10px;
+}
+
+.catalogo-error {
+  color: #9a4f80;
+  background: #fff0f3;
+  border-color: #fab2da;
+}

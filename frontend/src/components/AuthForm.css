@@ -1,0 +1,14 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form-error {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #fab2da;
+  background: #fff0f3;
+  color: #9a4f80;
+  font-size: 0.88rem;
+}

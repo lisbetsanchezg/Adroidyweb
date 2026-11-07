@@ -1,0 +1,207 @@
+{
+  "info": {
+    "_postman_id": "b1279bb0-71c6-4a32-a752-e5e9f76bec6e",
+    "name": "BeautyShop Auth",
+    "description": "Coleccion para probar el servicio de registro e inicio de sesion (AA5-EV01: auth-service).\n\nContrato del servicio:\n- Campos JSON: nombre, correo, contrasena.\n- Login exitoso devuelve el mensaje 'Autenticacion satisfactoria'.\n- Nunca se expone la contrasena en las respuestas.\n- baseUrl por defecto http://localhost:8080.\n\nLa peticion 'Registro exitoso' genera un correo unico por corrida (variable userCorreo) para que siempre devuelva 201 al re-ejecutar la coleccion con el Runner. Las peticiones 2-4 reutilizan ese mismo correo.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Registro exitoso",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Correo unico por corrida para que el registro siempre sea nuevo (201).",
+              "pm.collectionVariables.set('userCorreo', 'lisbet_' + Date.now() + '@correo.com');"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Codigo 201 (creado)', function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "pm.test('El body contiene correo', function () {",
+              "    pm.expect(pm.response.text()).to.include('correo');",
+              "});",
+              "",
+              "pm.test('El body NO contiene contrasena', function () {",
+              "    pm.expect(pm.response.text()).to.not.include('contrasena');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nombre\": \"Lisbet Sanchez\",\n    \"correo\": \"{{userCorreo}}\",\n    \"contrasena\": \"{{contrasena}}\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "register"]
+        },
+        "description": "Registra un usuario nuevo. Espera 201 y el body con 'correo' pero sin 'contrasena'."
+      },
+      "response": []
+    },
+    {
+      "name": "Registro con correo duplicado",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Codigo 400 (correo duplicado)', function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nombre\": \"Lisbet Sanchez\",\n    \"correo\": \"{{userCorreo}}\",\n    \"contrasena\": \"{{contrasena}}\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "register"]
+        },
+        "description": "Reintenta el registro con el mismo correo de la peticion anterior. Espera 400."
+      },
+      "response": []
+    },
+    {
+      "name": "Login exitoso",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Codigo 200 (autenticado)', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('El body contiene \\\"satisfactoria\\\"', function () {",
+              "    pm.expect(pm.response.text().toLowerCase()).to.include('satisfactoria');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"correo\": \"{{userCorreo}}\",\n    \"contrasena\": \"{{contrasena}}\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        },
+        "description": "Inicia sesion con credenciales validas. Espera 200 y el mensaje 'Autenticacion satisfactoria'."
+      },
+      "response": []
+    },
+    {
+      "name": "Login con contrasena incorrecta",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Codigo 401 (no autorizado)', function () {",
+              "    pm.response.to.have.status(401);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"correo\": \"{{userCorreo}}\",\n    \"contrasena\": \"clave-incorrecta\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        },
+        "description": "Inicia sesion con la contrasena equivocada. Espera 401."
+      },
+      "response": []
+    },
+    {
+      "name": "Login con usuario inexistente",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Codigo 401 (no autorizado)', function () {",
+              "    pm.response.to.have.status(401);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"correo\": \"noexiste@correo.com\",\n    \"contrasena\": \"{{contrasena}}\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        },
+        "description": "Inicia sesion con un correo que no existe. Espera 401."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "userCorreo", "value": "lisbet@correo.com" },
+    { "key": "contrasena", "value": "Clave123*" }
+  ]
+}

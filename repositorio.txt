@@ -1,0 +1,33 @@
+========================================================================
+BeautyShop - Repositorio remoto
+Evidencias GA8-220501096-AA1-EV01 y AA1-EV02
+(Codificacion de modulos, pruebas unitarias e integracion de modulos)
+Programa: Analisis y Desarrollo de Software (SENA)
+Ficha: 228118
+========================================================================
+
+Enlace al repositorio de GitHub:
+
+    https://github.com/lisbetsanchezg/Adroidyweb
+
+Enlace al video de sustentacion: ver ENLACE_VIDEO_SUSTENTACION.md
+
+------------------------------------------------------------------------
+URLs locales (despliegue local, ver docs/DESPLIEGUE.md):
+    - Backend (API REST)  : http://localhost:8090/api/products
+    - Swagger UI          : http://localhost:8090/swagger-ui.html
+    - Especificacion JSON : http://localhost:8090/v3/api-docs
+    - Frontend React      : http://localhost:4300
+    - auth-service        : http://localhost:8080/api/auth  (puerto 8080)
+    - Servlets/JSP (WAR)  : http://localhost:8080/beautyshop-web/  (Tomcat 10.1)
+
+Nota: auth-service y Tomcat usan el mismo puerto 8080; ejecuta uno a la vez.
+
+------------------------------------------------------------------------
+Contenido de la entrega:
+    - ejecutables/   JAR del backend, JAR de auth-service, WAR de servlets y
+                     build del frontend (frontend-dist/)
+    - docs/          manual tecnico, modulos, configuracion, ambientes,
+                     informe de pruebas, despliegue y capturas
+    - src/test/      pruebas unitarias (./mvnw test)
+========================================================================

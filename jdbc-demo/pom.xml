@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Mini proyecto independiente para la evidencia GA7-220501096-AA2-EV01:
+         demostracion de conexion a MySQL con JDBC puro (insertar, actualizar, eliminar). -->
+    <groupId>com.beautyshop</groupId>
+    <artifactId>jdbc-demo</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>BeautyShop JDBC Demo</name>
+    <description>Demostracion de JDBC (Class.forName, DriverManager, Statement) - SENA AA2-EV01</description>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <exec.mainClass>com.beautyshop.jdbc.ProductJdbcDemo</exec.mainClass>
+    </properties>
+
+    <dependencies>
+        <!-- PUNTO 1 del video: driver JDBC de MySQL (aparece en las librerias del proyecto) -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.3.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Permite ejecutar la clase main con: ./mvnw compile exec:java -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>${exec.mainClass}</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

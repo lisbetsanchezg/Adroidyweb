@@ -1,0 +1,25 @@
+# Dependencias
+node_modules/
+
+# Build
+dist/
+dist-ssr/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Variables de entorno
+.env
+.env.local
+
+# Editor / SO
+.vscode/
+.idea/
+.DS_Store
+
+# Playwright (e2e)
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/

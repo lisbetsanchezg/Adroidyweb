@@ -1,0 +1,46 @@
+# ===== Java / Maven =====
+target/
+*.class
+*.jar
+*.war
+!.mvn/wrapper/maven-wrapper.jar
+!**/gradle/wrapper/gradle-wrapper.jar
+
+# ===== Android / Gradle =====
+.gradle/
+local.properties
+.kotlin/
+
+# ===== Spring Boot =====
+*.log
+application-local.properties
+
+# ===== IDE =====
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# ===== Node / React (frontend) =====
+node_modules/
+build/
+dist/
+.env
+playwright-report/
+test-results/
+.env.local
+
+# ===== Sistema operativo =====
+.DS_Store
+Thumbs.db
+~$*
+
+# ===== Entregables comprimidos y carpeta de actividades =====
+*.zip
+LisbetSanchez_BeautyShop_Actividades/
+
+# ===== Ejecutables entregados (se versionan a proposito) =====
+!ejecutables/
+!ejecutables/**

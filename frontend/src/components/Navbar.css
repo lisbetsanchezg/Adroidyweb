@@ -1,0 +1,110 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #f2d7e7;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.navbar-logo {
+  font-size: clamp(1.4rem, 4vw, 1.7rem);
+  font-weight: 900;
+  color: var(--rosa-oscuro);
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar-links a {
+  position: relative;
+  text-decoration: none;
+  color: #5f4d6f;
+  font-weight: 600;
+  padding: 7px 10px;
+  border-radius: 8px;
+  transition: 0.2s;
+  font-size: 0.9rem;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  background: var(--rosa-fondo);
+  color: var(--rosa-oscuro);
+}
+
+/* El boton Login destaca con el degradado de marca */
+.navbar-login {
+  margin-left: 8px;
+  background: var(--grad-boton);
+  color: #fff !important;
+  font-weight: 700;
+}
+
+.navbar-login:hover {
+  background: var(--grad-boton) !important;
+  color: #fff !important;
+  opacity: 0.92;
+}
+
+.navbar-user {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+}
+
+.navbar-username {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--rosa-oscuro);
+}
+
+.navbar-logout {
+  border: 1px solid #f0c7dd;
+  background: #fff;
+  color: #8f5a7d;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.navbar-logout:hover {
+  background: #fef8fc;
+}
+
+.navbar-badge {
+  display: inline-block;
+  margin-left: 6px;
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--rosa-oscuro);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding: 12px 14px;
+  }
+  .navbar-links a {
+    padding: 6px 8px;
+    font-size: 0.82rem;
+  }
+}

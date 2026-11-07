@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Descriptor de despliegue de la aplicacion web BeautyShop.
+    Los servlets se mapean mediante anotaciones @WebServlet (RegisterServlet -> /register,
+    LoginServlet -> /login), por lo que aqui solo se define la pagina de inicio.
+-->
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>BeautyShop Web Servlets Module</display-name>
+
+    <!-- Pagina que se abre al entrar a la raiz de la aplicacion -->
+    <welcome-file-list>
+        <welcome-file>login.html</welcome-file>
+    </welcome-file-list>
+
+</web-app>

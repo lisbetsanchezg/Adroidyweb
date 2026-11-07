@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Coordenadas del modulo web (independiente del backend Spring Boot) -->
+    <groupId>com.beautyshop</groupId>
+    <artifactId>web-servlets-module</artifactId>
+    <version>1.0.0</version>
+
+    <!-- Empaquetado WAR: aplicacion web desplegable en un servidor como Apache Tomcat -->
+    <packaging>war</packaging>
+
+    <name>BeautyShop Web Servlets Module</name>
+    <description>Modulo de registro e inicio de sesion con Servlets y JSP puros (SENA ADSO - AA2-EV02)</description>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- API de Jakarta Servlet (namespace jakarta.*). Compatible con Tomcat 10.1+.
+             scope 'provided': la aporta el servidor (Tomcat), no se empaqueta en el WAR. -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- API de Jakarta Server Pages (JSP). Tambien la provee Tomcat. -->
+        <dependency>
+            <groupId>jakarta.servlet.jsp</groupId>
+            <artifactId>jakarta.servlet.jsp-api</artifactId>
+            <version>3.1.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Driver JDBC de MySQL. Se empaqueta en el WAR (scope compile por defecto). -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.3.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- Nombre final del WAR: beautyshop-web.war -->
+        <finalName>beautyshop-web</finalName>
+        <plugins>
+            <!-- Genera el archivo WAR a partir de src/main/webapp y las clases compiladas -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

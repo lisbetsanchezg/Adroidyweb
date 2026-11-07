@@ -1,0 +1,123 @@
+.cart-summary {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: var(--sombra-card);
+  border: 1px solid var(--borde);
+  padding: 18px;
+}
+
+.cart-summary-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3e1f0;
+}
+
+.cart-summary-item:last-child {
+  border-bottom: none;
+}
+
+.cart-summary-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cart-summary-name {
+  font-weight: 700;
+  color: #333;
+  font-size: 0.96rem;
+}
+
+.cart-summary-unit {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+.cart-summary-qty {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cart-summary-qty button {
+  border: 1px solid #d5c1d4;
+  background: #f6e3f5;
+  color: #8f3d81;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.cart-summary-qty button:hover {
+  background: #e8c8e6;
+}
+
+.cart-summary-qty span {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.cart-summary-subtotal {
+  font-weight: 800;
+  color: var(--rosa-oscuro);
+  min-width: 80px;
+  text-align: right;
+  font-size: 0.95rem;
+}
+
+.cart-summary-remove {
+  border: none;
+  background: #fde0ec;
+  color: #c94a6d;
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.cart-summary-remove:hover {
+  background: #fcc8de;
+}
+
+.cart-summary-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.cart-summary-total {
+  font-size: clamp(1.3rem, 4vw, 1.5rem);
+  color: var(--rosa-oscuro);
+  font-weight: 800;
+}
+
+.cart-summary-empty {
+  padding: 20px;
+  text-align: center;
+  color: #8a6d86;
+  background: #fff5fb;
+  border-radius: 10px;
+  border: 1px solid #f3dbe9;
+}
+
+@media (max-width: 640px) {
+  .cart-summary-item {
+    grid-template-columns: 1fr auto;
+    row-gap: 8px;
+  }
+  .cart-summary-subtotal {
+    text-align: left;
+  }
+}

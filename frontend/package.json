@@ -1,0 +1,24 @@
+{
+  "name": "beautyshop-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Frontend React de BeautyShop (SENA ADSO)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.24.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.3.1"
+  }
+}

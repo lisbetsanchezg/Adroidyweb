@@ -1,0 +1,146 @@
+/* =====================================================================
+   BeautyShop - Sistema de diseno global
+   Tokens de color unificados (se corrigen las inconsistencias de los
+   mockups: aqui cada variable tiene un unico significado).
+   ===================================================================== */
+:root {
+  --rosa-oscuro: #d81072;
+  --rosa: #ff4da6;
+  --rosa-hot: #ff1a8c;
+  --rosa-suave: #ffe3f2;
+  --rosa-fondo: #ffeef8;
+  --texto: #3b2f4c;
+  --texto-suave: #7f6582;
+  --borde: #f0d8e7;
+  --grad-boton: linear-gradient(135deg, #ff4da6, #ff1a8c);
+  --sombra-card: 0 10px 24px rgba(95, 38, 99, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(160deg, #fff0f8 0%, #f8f2ff 60%, #f4f7ff 100%);
+  background-attachment: fixed;
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+/* Contenedor centrado reutilizable */
+.container {
+  max-width: 1180px;
+  margin: clamp(20px, 5vw, 28px) auto;
+  padding: 0 16px;
+}
+
+.section-title {
+  margin: 26px 0 16px;
+  font-size: clamp(1.3rem, 4vw, 1.4rem);
+  color: #472f53;
+}
+
+/* ---------- Botones ---------- */
+.btn-primary,
+.btn-secondary {
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  padding: 11px 15px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--grad-boton);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(255, 77, 166, 0.3);
+}
+
+.btn-secondary {
+  background: #fff;
+  border: 1px solid #f0c7dd;
+  color: #8f5a7d;
+}
+
+.btn-secondary:hover {
+  background: #fef8fc;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ---------- Formularios ---------- */
+.input-group {
+  margin-bottom: 14px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--texto-suave);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid #e0c9dd;
+  border-radius: 9px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--rosa-oscuro);
+  box-shadow: 0 0 0 3px rgba(216, 16, 114, 0.16);
+}
+
+/* ---------- Grid de productos y tarjetas ---------- */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 1100px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 850px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+footer {
+  margin: 30px 0 20px;
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}

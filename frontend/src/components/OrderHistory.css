@@ -1,0 +1,77 @@
+.order-history {
+  display: grid;
+  gap: 14px;
+}
+
+.order-card {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  box-shadow: var(--sombra-card);
+  padding: 16px;
+}
+
+.order-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.order-card-id {
+  font-weight: 800;
+  color: #403050;
+}
+
+.order-card-date {
+  margin: 6px 0 0;
+  color: var(--texto-suave);
+  font-size: 0.88rem;
+}
+
+.order-card-total {
+  margin: 8px 0 0;
+  font-weight: 800;
+  color: var(--rosa-oscuro);
+  font-size: 1.05rem;
+}
+
+.order-status {
+  text-transform: capitalize;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eee;
+  color: #555;
+}
+
+.order-status-pendiente {
+  background: #fff3cd;
+  color: #8a6d00;
+}
+.order-status-pagado {
+  background: #d7f0e0;
+  color: #1f7a4d;
+}
+.order-status-enviado {
+  background: #d9e8ff;
+  color: #2a5fa6;
+}
+.order-status-entregado {
+  background: #e2d7f5;
+  color: #6a3fb0;
+}
+.order-status-cancelado {
+  background: #fde0e0;
+  color: #b33;
+}
+
+.order-history-empty {
+  padding: 20px;
+  text-align: center;
+  color: #8a6d86;
+  background: #fff5fb;
+  border-radius: 10px;
+  border: 1px solid #f3dbe9;
+}
